@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARE METAL BEATS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ff33; /* Toxic hardware green */
+            --bg-dark: #050505; /* Deep absolute black */
+            --text-main: #f0f0f0;
+            --text-muted: #666666;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: var(--bg-dark);
+            /* Gritty radial spotlight effect */
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-dark) 100%);
+            font-family: 'Roboto Mono', monospace;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Subtle CRT / Terminal Scanline Overlay */
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 90%;
+            max-width: 420px;
+            padding: 40px 20px;
+            background: rgba(10, 10, 10, 0.7);
+            border: 1px solid #222;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 255, 51, 0.02);
+            backdrop-filter: blur(10px);
+            margin: 40px 0; /* Added margin for smaller screens */
+        }
+
+        .logo-wrapper {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 25px;
+        }
+
+        .logo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #111;
+            /* Boosts contrast to make the green circuit pop against the black */
+            filter: contrast(120%); 
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Animated glowing ring behind the logo */
+        .logo-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), transparent, #111, transparent);
+            z-index: 1;
+            animation: spin 5s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.8rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: 3px 3px 0px #000, -1px -1px 15px rgba(0, 255, 51, 0.2);
+        }
+
+        .bio {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .bio span {
+            color: var(--primary);
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .btn {
+            display: block;
+            padding: 18px 20px;
+            background: #0d0d0d;
+            color: var(--text-main);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid #222;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* The sweeping hover effect */
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 51, 0.15), transparent);
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 255, 51, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .footer-txt {
+            margin-top: 35px;
+            font-size: 0.7rem;
+            color: #333;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-wrapper">
+            <img src="logo.png" alt="Bare Metal CPU" class="logo">
+        </div>
+        
+        <h1>BARE METAL BEATS</h1>
+        <p class="bio">Raw Hardware // <span>No Presets</span></p>
+
+        <div class="links">
+            <a href="#" class="btn">Lease Audio (BeatStars)</a>
+            <a href="#" class="btn">Watch & Listen (YouTube)</a>
+            <a href="#" class="btn">Connect on X</a>
+            <a href="#" class="btn">Connect on IG</a>
+            <a href="mailto:baremetalbeats@gmail.com" class="btn">Contact on Email</a>
+        </div>
+        
+        <div class="footer-txt">© 2026 BARE METAL BEATS</div>
+    </div>
+</body>
+</html>
